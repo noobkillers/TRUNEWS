@@ -1,13 +1,18 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000'; // Update for production
+const API_URL = 'https://urban-zebra-q765gxqv55p424wpp-8000.app.github.dev/'; // Update for production
 
 const api = axios.create({
   baseURL: API_URL,
 });
 
+// ✅ Now accepts role
 export const login = async (username, password, role) => {
-  const response = await api.post('/login', { username, password, role });
+  const response = await axios.post(`${API_URL}/login`, {
+    username,
+    password,
+    role, // added role
+  });
   return response.data;
 };
 
